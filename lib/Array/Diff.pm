@@ -4,10 +4,11 @@ use warnings;
 use base qw/Class::Accessor::Fast/;
 
 use Algorithm::Diff;
+eval q{ use Algorithm::Diff::XS; };
 
 our $VERSION = '0.04';
 
-__PACKAGE__->mk_accessors(qw/added deleted count/);
+__PACKAGE__->mk_accessors(qw/added deleted count diff_class/);
 
 =head1 NAME
 
@@ -37,6 +38,18 @@ L<Algorithm::Diff>
 
 =head1 METHODS
 
+=head2 new
+
+=cut
+
+sub new {
+    my $self = shift->SUPER::new(@_);
+
+    $self->{diff_class} ||= $INC{'Algorithm/Diff/XS.pm'} ? 'Algorithm::Diff::XS' : 'Algorithm::Diff';
+
+    $self;
+}
+
 =head2 diff
 
 =cut
@@ -49,7 +62,7 @@ sub diff {
     $self->deleted( [] );
     $self->count( 0 );
 
-    my $diff = Algorithm::Diff->new( $old, $new );
+    my $diff = $self->diff_class->new( $old, $new );
     while ( $diff->Next ) {
         next if $diff->Same;
 
