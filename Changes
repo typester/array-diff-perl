@@ -1,5 +1,8 @@
 Revision history for Perl module Array::Diff
 
+0.05 2008-10-23T11:05:53+09:00
+     - added Algorithm::Diff::XS support
+
 0.04 2006-09-02T13:14:13+09:00
      - added count method that returns diff count
 
