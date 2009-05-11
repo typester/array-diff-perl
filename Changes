@@ -1,5 +1,8 @@
 Revision history for Perl module Array::Diff
 
+0.05001 2009-05-11T10:39:47+09:00
+     - upgrade a document. (Thanks to Peter Pentchev)
+
 0.05 2008-10-23T11:05:53+09:00
      - added Algorithm::Diff::XS support
 
