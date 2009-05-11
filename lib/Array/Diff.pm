@@ -12,7 +12,7 @@ __PACKAGE__->mk_accessors(qw/added deleted count diff_class/);
 
 =head1 NAME
 
-Array::Diff - Diff two arrays
+Array::Diff - Find the differences between two arrays
 
 =head1 SYNOPSIS
 
@@ -27,18 +27,18 @@ Array::Diff - Diff two arrays
 
 =head1 DESCRIPTION
 
-This module do diff two arrays, and return added and deleted arrays.
-It's simple usage of Algorithm::Diff.
+This module compares two arrays and returns the added or deleted elements
+in two separate arrays.  It's a simple wrapper around L<Algorithm::Diff>.
 
 And if you need more complex array tools, check L<Array::Compare>.
 
-=head1 SEE ALSO
-
-L<Algorithm::Diff>
-
 =head1 METHODS
 
-=head2 new
+=over 4
+
+=item new ()
+
+Create a new C<Array::Diff> object.
 
 =cut
 
@@ -50,7 +50,17 @@ sub new {
     $self;
 }
 
-=head2 diff
+=item diff ( OLD, NEW )
+
+Compute the differences between two arrays.  The results are stored
+in the C<added>, C<deleted>, and C<count> properties that may be
+examined using the corresponding methods.
+
+This method may be invoked as an object method, in which case it will
+recalculate the differences and repopulate the C<count>, C<added>, and
+C<removed> properties, or as a static method, in which case it will
+return a newly-created C<Array::Diff> object with the properies
+set appropriately.
 
 =cut
 
@@ -77,6 +87,31 @@ sub diff {
 
     $self;
 }
+
+=item added ( [VALUES ] )
+
+Get or set the elements present in the C<NEW> array and absent in
+the C<OLD> one at the comparison performed by the last C<diff()>
+invocation.
+
+=item deleted ( [VALUES] )
+
+Get or set the elements present in the C<OLD> array and absent in
+the C<NEW> one at the comparison performed by the last C<diff()>
+invocation.
+
+=item count ( [VALUE] )
+
+Get or set the total number of added or deleted elements at
+the comparison performed by the last C<diff()> invocation.
+This count should be equal to the sum of the number of elements in
+the C<added> and C<deleted> properties.
+
+=back
+
+=head1 SEE ALSO
+
+L<Algorithm::Diff>
 
 =head1 AUTHOR
 
