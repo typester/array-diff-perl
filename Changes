@@ -1,5 +1,8 @@
 Revision history for Perl module Array::Diff
 
+0.05002 2009-05-12T11:54:26+09:00
+     - upgrade copyright and license statement in document (Thanks to Peter Pentchev)
+
 0.05001 2009-05-11T10:39:47+09:00
      - upgrade a document. (Thanks to Peter Pentchev)
 
