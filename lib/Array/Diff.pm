@@ -117,7 +117,9 @@ L<Algorithm::Diff>
 
 Daisuke Murase <typester@cpan.org>
 
-=head1 COPYRIGHT
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (c) 2009 by Daisuke Murase.
 
 This program is free software; you can redistribute
 it and/or modify it under the same terms as Perl itself.
