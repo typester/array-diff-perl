@@ -6,7 +6,7 @@ use base qw/Class::Accessor::Fast/;
 use Algorithm::Diff;
 eval q{ use Algorithm::Diff::XS; };
 
-our $VERSION = '0.05002';
+our $VERSION = '0.06';
 
 __PACKAGE__->mk_accessors(qw/added deleted count diff_class/);
 
