@@ -6,7 +6,7 @@ all_from 'lib/Array/Diff.pm';
 
 test_requires 'Test::More';
 
-requires 'Algorithm::Diff' => '0.19';
+requires 'Algorithm::Diff' => '1.19';
 requires 'Class::Accessor::Fast';
 
 recommends 'Algorithm::Diff::XS';
