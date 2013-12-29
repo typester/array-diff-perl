@@ -59,7 +59,7 @@ examined using the corresponding methods.
 This method may be invoked as an object method, in which case it will
 recalculate the differences and repopulate the C<count>, C<added>, and
 C<removed> properties, or as a static method, in which case it will
-return a newly-created C<Array::Diff> object with the properies
+return a newly-created C<Array::Diff> object with the properties
 set appropriately.
 
 =cut
