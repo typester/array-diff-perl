@@ -66,7 +66,7 @@ set appropriately.
 
 sub diff {
     my ( $self, $old, $new ) = @_;
-    $self = $self->new unless ref $self
+    $self = $self->new unless ref $self;
 
     $self->added(   [] );
     $self->deleted( [] );
