@@ -6,7 +6,7 @@ use base qw/Class::Accessor::Fast/;
 use Algorithm::Diff;
 eval q{ use Algorithm::Diff::XS; };
 
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 
 __PACKAGE__->mk_accessors(qw/added deleted count diff_class/);
 
@@ -18,9 +18,9 @@ Array::Diff - Find the differences between two arrays
 
     my @old = ( 'a', 'b', 'c' );
     my @new = ( 'b', 'c', 'd' );
-    
+
     my $diff = Array::Diff->diff( \@old, \@new );
-    
+
     $diff->count   # 2
     $diff->added   # [ 'd' ];
     $diff->deleted # [ 'a' ];
@@ -76,13 +76,12 @@ sub diff {
     while ( $diff->Next ) {
         next if $diff->Same;
 
-        $self->{count}++;
+        my @deleted = $diff->Items(1);
+        my @added = $diff->Items(2);
 
-        push @{ $self->{deleted} }, $diff->Items(1)
-            if $diff->Items(1);
-
-        push @{ $self->{added} }, $diff->Items(2)
-            if $diff->Items(2);
+        $self->{count} += @added + @deleted;
+        push @{$self->{deleted}}, @deleted if @deleted;
+        push @{$self->{added}}, @added if @added;
     }
 
     $self;
