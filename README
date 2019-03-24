@@ -2,19 +2,19 @@ This is Perl module Array::Diff.
 
 INSTALLATION
 
-Array::Diff installation is straightforward. If your CPAN shell is set up,
-you should just be able to do
+Standard process for building & installing modules:
 
-    % cpan Array::Diff
+    perl Build.PL
+    ./Build
+    ./Build test
+    ./Build install
 
-Download it, unpack it, then build it as per the usual:
+Or, if you're on a platform that doesn't require the "./" notation, you can do this:
 
-    % perl Makefile.PL
-    % make && make test
-
-Then install it:
-
-    % make install
+    perl Build.PL
+    Build
+    Build test
+    Build install
 
 DOCUMENTATION
 
